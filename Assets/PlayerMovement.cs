@@ -52,14 +52,20 @@ public class PlayerMovement : MonoBehaviour
 	}
 	void Move (float h, float v)
 	{
+		//float fallSpeed = movement.y;
 		// Set the movement vector based on the axis input.
 		movement.Set (h, 0f, v);
 		
 		// Normalise the movement vector and make it proportional to the speed per second.
-		movement = movement.normalized * speed * Time.deltaTime;
-		
+
+		movement = movement.normalized * speed;// * Time.deltaTime;
+		movement.y = playerRigidbody.velocity.y + -0.1f;
+
+		//movement.y = fallSpeed + 0.1f;
 		// Move the player to it's current position plus the movement.
-		playerRigidbody.MovePosition (transform.position + movement);
+		//playerRigidbody.MovePosition (transform.position + movement);
+		playerRigidbody.velocity = movement;
+
 		
 	}
 	
