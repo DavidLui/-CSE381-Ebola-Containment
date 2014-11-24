@@ -21,14 +21,12 @@ public class BossAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.LookAt(playerTransform);
-		if (BossHP <= 0) {
+		if (BossHP <= 90) {
 			Application.LoadLevel (0);
 		}
 	}
 	
 	void OnCollisionEnter (Collision other) {
-		//if (other.gameObject.tag == "GroundPlane") {
-			rigidbody.velocity *= 0;
 			
 			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 			Instantiate (shot, shotSpawn.position, shotSpawn2.rotation);
@@ -40,8 +38,14 @@ public class BossAttack : MonoBehaviour {
 
 			StartCoroutine(MyMethod());
 			
+	
+	
+	}
+	void OnTriggerEnter (Collider other) {
+		if (other.tag == "DestructableWall") {
+			Destroy (other.gameObject);
 
-		//}
+		}
 		if (other.gameObject.tag == "Bolt") {
 			BossHP -= 10;
 			Destroy (other.gameObject);
