@@ -2,7 +2,16 @@ fileFormatVersion: 2
 guid: 0564b58c4d8b0fb45a2a9e3b11a3c4a4
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shotSpawn: {instanceID: 0}
+  - shotSpawn2: {instanceID: 0}
+  - shotSpawn3: {instanceID: 0}
+  - shotSpawn4: {instanceID: 0}
+  - shotSpawn5: {instanceID: 0}
+  - shotSpawn6: {instanceID: 0}
+  - shotSpawn7: {instanceID: 0}
+  - shot: {instanceID: 0}
+  - capsule: {fileID: 100000, guid: 99dedf35478d6814aa5e1953a5499aa5, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
