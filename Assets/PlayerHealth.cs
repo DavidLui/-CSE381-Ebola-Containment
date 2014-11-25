@@ -6,11 +6,8 @@ public class PlayerHealth : MonoBehaviour
 {
 	public int startingHealth = 100;                            // The amount of health the player starts the game with.
 	public int currentHealth;                                   // The current health the player has.
-	public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
-	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
 	public GUIText healthText;
 	
-	Animator anim;                                              // Reference to the Animator component.
                               
 	PlayerMovement playerMovement;                              // Reference to the player's movement.
 	PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.

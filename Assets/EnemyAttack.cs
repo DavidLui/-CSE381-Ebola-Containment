@@ -16,6 +16,8 @@ public class EnemyAttack : MonoBehaviour {
 		EnemyHealth = GetComponent <EnemyHealth> ();
 		Health = EnemyHealth.currentHealth;	
 		playerHealth = Player.GetComponent <PlayerHealth> ();
+		transform.LookAt(Player.transform);	
+
 	}
 	Vector3 movement;
 	void OnTriggerEnter (Collider other)
@@ -25,7 +27,9 @@ public class EnemyAttack : MonoBehaviour {
 			Aggro = true;
 			transform.position -= transform.forward * Time.deltaTime * 5f;
 		} 
+
 	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Application.loadedLevel == 1) {
@@ -47,16 +51,36 @@ public class EnemyAttack : MonoBehaviour {
 										Shoot ();
 										Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 								}
+								if (Player != null) {
+									transform.LookAt(Player.transform);
+								}
 						}
-				} else if (Application.loadedLevel == 5) {
-					rigidbody.velocity = transform.forward * 5.0f;
-
+				
 				}
-		if (Player != null) {
-			transform.LookAt(Player.transform);
+		else if (Application.loadedLevel == 4) {
+			rigidbody.velocity = transform.forward * 6.0f;
+			if (gameObject.transform.position.y <= -5.0) {
+				Destroy (gameObject);
+
+			}
+
+			StartCoroutine(MyMethod());
+
+			
 		}
+		else if (Application.loadedLevel == 5) {
+			rigidbody.velocity = transform.forward * 5.0f;
+		}
+
 		
 
+	}
+	IEnumerator MyMethod() {
+		Debug.Log("Before Waiting 2 seconds");
+		yield return new WaitForSeconds(50);
+		Application.LoadLevel (5);
+
+		Debug.Log("After Waiting 2 Seconds");
 	}
 	void Shoot(){
 		timer = 0f;
