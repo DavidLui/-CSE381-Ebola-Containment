@@ -21,8 +21,8 @@ public class BossAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.LookAt(playerTransform);
-		if (BossHP <= 60) {
-			Application.LoadLevel (0);
+		if (BossHP <= 50) {
+			Application.LoadLevel (4);
 		}
 	}
 	public GameObject capsule;
@@ -44,20 +44,21 @@ public class BossAttack : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		if (other.tag == "DestructableWall") {
 			Destroy (other.gameObject);
+			float random = Random.Range(-1.0F, 1.0F);
+			if (random >= 0) {
+				Instantiate (capsule, other.transform.position, other.transform.rotation);
+
+			}
+		}
+		if (other.tag == "Player") {
+			BossHP -= 10;
 
 		}
 		if (other.gameObject.tag == "Bolt") {
 			BossHP -= 10;
 			Destroy (other.gameObject);
 		}
-		if (other.gameObject.tag == "Capsule") {
-		float random = Random.Range(-1.0F, 1.0F);
-		if (random >= 0) {
-			Instantiate (capsule, other.transform.position, other.transform.rotation);
 
-		}
-		}
-		
 	}
 	IEnumerator MyMethod() {
 		Debug.Log("Before Waiting 2 seconds");
