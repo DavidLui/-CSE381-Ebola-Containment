@@ -24,9 +24,23 @@ public class PlayerMovement : MonoBehaviour
 		// Set up references.
 		anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
+		if (Application.loadedLevel == 1) {
+			//transform.rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
+		}
+		else {
+			//transform.rigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
+		}
 	}
 	
-	
+	void Update() {
+		if (Application.loadedLevel == 5) {
+			if (transform.position.y <= 0) {
+				Application.LoadLevel (3);
+			}
+
+		}
+
+	}
 	void FixedUpdate ()
 	{
 		// Store the input axes.
@@ -48,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 			mutationPoints += 1;
 			Destroy (other.gameObject);
 			mutationText.text = "Mutation Points: " + mutationPoints;
+			speed +=.1f;
 		} 
 	}
 	void Move (float h, float v)
@@ -62,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 		playerRigidbody.MovePosition (transform.position + movement);
 		
 	}
-	
+
 	void Turning ()
 	{
 		// Create a ray from the mouse cursor on screen in the direction of the camera.

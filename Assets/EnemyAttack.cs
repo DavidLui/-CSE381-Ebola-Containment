@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour {
 		EnemyHealth = GetComponent <EnemyHealth> ();
 		Health = EnemyHealth.currentHealth;	
 		playerHealth = Player.GetComponent <PlayerHealth> ();
-		transform.LookAt(Player.transform);	
+
 
 	}
 	Vector3 movement;
@@ -30,6 +30,12 @@ public class EnemyAttack : MonoBehaviour {
 
 	}
 
+	void Awake() {
+		if (Application.loadedLevel == 4) {
+
+			transform.LookAt(Player.transform);	
+		}
+	}
 	// Update is called once per frame
 	void Update () {
 		if (Application.loadedLevel == 1) {
@@ -58,18 +64,22 @@ public class EnemyAttack : MonoBehaviour {
 				
 				}
 		else if (Application.loadedLevel == 4) {
+			if (transform.position.y >= 40) {
+			}
 			rigidbody.velocity = transform.forward * 6.0f;
-			if (gameObject.transform.position.y <= -5.0) {
+			if (gameObject.transform.position.y <= 1.2) {
 				Destroy (gameObject);
 
 			}
-
 			StartCoroutine(MyMethod());
 
 			
 		}
 		else if (Application.loadedLevel == 5) {
+
 			rigidbody.velocity = transform.forward * 5.0f;
+
+		
 		}
 
 		
