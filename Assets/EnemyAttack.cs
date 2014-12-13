@@ -32,7 +32,6 @@ public class EnemyAttack : MonoBehaviour {
 
 	void Awake() {
 		if (Application.loadedLevel == 4) {
-
 			transform.LookAt(Player.transform);	
 		}
 	}
@@ -47,6 +46,9 @@ public class EnemyAttack : MonoBehaviour {
 								Aggro = true;
 						}
 						if (Aggro == true) {
+								if (Player != null) {
+									transform.LookAt(Player.transform);
+								}
 								if (EnemyHealth.currentHealth > 0 && distance >= 11) {
 										rigidbody.velocity = transform.forward * 3.0f;
 								} else {
@@ -57,15 +59,12 @@ public class EnemyAttack : MonoBehaviour {
 										Shoot ();
 										Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 								}
-								if (Player != null) {
-									transform.LookAt(Player.transform);
-								}
+
 						}
 				
 				}
 		else if (Application.loadedLevel == 4) {
-			if (transform.position.y >= 40) {
-			}
+
 			rigidbody.velocity = transform.forward * 6.0f;
 			if (gameObject.transform.position.y <= 1.2) {
 				Destroy (gameObject);
@@ -76,9 +75,12 @@ public class EnemyAttack : MonoBehaviour {
 			
 		}
 		else if (Application.loadedLevel == 5) {
-
-			rigidbody.velocity = transform.forward * 5.0f;
-
+			float time = Time.timeSinceLevelLoad;
+			rigidbody.velocity = transform.forward * (5.0f + (time / 50));
+			Vector3 pose = transform.position;
+			if ((pose.z + 5f) <= Player.transform.position.z) {
+				Destroy (gameObject);
+			}
 		
 		}
 
@@ -88,7 +90,7 @@ public class EnemyAttack : MonoBehaviour {
 	IEnumerator MyMethod() {
 		Debug.Log("Before Waiting 2 seconds");
 		yield return new WaitForSeconds(50);
-		Application.LoadLevel (5);
+		Application.LoadLevel ("Level 3 Loader");
 
 		Debug.Log("After Waiting 2 Seconds");
 	}

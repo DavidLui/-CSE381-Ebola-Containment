@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
 		// Create a layer mask for the floor layer.
 		floorMask = LayerMask.GetMask ("Floor");
 		
-		// Set up references.
-		anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
 		if (Application.loadedLevel == 1) {
 			//transform.rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
@@ -36,22 +34,52 @@ public class PlayerMovement : MonoBehaviour
 		if (Application.loadedLevel == 5) {
 			if (transform.position.y <= 0) {
 				Application.LoadLevel (3);
-			}
+
+			}			rigidbody.velocity = transform.forward * 3.0f;
+
 
 		}
 
 	}
 	void FixedUpdate ()
 	{
-		// Store the input axes.
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
-		
-		Move (h, v);
-		
-		// Turn the player to face the mouse cursor.
-		Turning ();
+		if (Application.loadedLevelName == "Level 3") {
 
+
+			Vector3 pose = transform.position;
+			if (Input.GetKeyDown("d")) {
+				if (transform.position.x >= -1
+				    && transform.position.x <= 1) {
+					pose.x = 5.7f;
+				}
+				else if (transform.position.x <= -5.9 &&
+				         transform.position.x >= -6.1) {
+					pose.x = 0;
+
+				}
+			}
+			if (Input.GetKeyDown("a")) {
+				if (transform.position.x >= -1
+				    && transform.position.x <= 1) {
+					pose.x = -6;
+				}
+				else if (transform.position.x >= 5.5) {
+					pose.x = 0;
+				}
+
+			}
+			transform.position = pose;
+		}
+		else {
+			// Store the input axes.
+			float h = Input.GetAxisRaw ("Horizontal");
+			float v = Input.GetAxisRaw ("Vertical");
+			
+			Move (h, v);
+			
+			// Turn the player to face the mouse cursor.
+			Turning ();
+		}
 	}
 	
 	void OnTriggerEnter (Collider other)
@@ -62,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 			mutationPoints += 1;
 			Destroy (other.gameObject);
 			mutationText.text = "Mutation Points: " + mutationPoints;
-			speed +=.1f;
+			speed +=.15f;
 		} 
 	}
 	void Move (float h, float v)

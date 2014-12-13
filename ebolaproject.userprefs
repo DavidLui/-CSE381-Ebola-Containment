@@ -1,16 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SpawnChargerLevel2.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ChargerSpawn.cs">
     <Files>
+      <File FileName="Assets\ChargerSpawn.cs" Line="22" Column="34" />
+      <File FileName="Assets\EnemyMovement.cs" Line="1" Column="1" />
       <File FileName="Assets\EnemyHealth.cs" Line="1" Column="1" />
       <File FileName="Assets\BossAttack.cs" Line="1" Column="1" />
       <File FileName="Assets\DestroyWall.cs" Line="1" Column="1" />
-      <File FileName="Assets\PlayerHealth.cs" Line="43" Column="3" />
+      <File FileName="Assets\PlayerHealth.cs" Line="1" Column="1" />
       <File FileName="Assets\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\PlayerMovement.cs" Line="28" Column="6" />
-      <File FileName="Assets\EnemyAttack.cs" Line="54" Column="1" />
-      <File FileName="Assets\EnemyMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\EnemyAttack.cs" Line="1" Column="1" />
       <File FileName="Assets\SpawnChargerLevel2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MenuScript.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

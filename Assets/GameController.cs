@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		string time = "" + (50 - Time.timeSinceLevelLoad);
+		mutationText.text = "TIMER: " + time + "s";
 	}
 }

@@ -22,7 +22,7 @@ public class BossAttack : MonoBehaviour {
 	void Update () {
 		transform.LookAt(playerTransform);
 		if (BossHP <= 50) {
-			Application.LoadLevel (4);
+			Application.LoadLevel("Level 2 Loader");
 		}
 	}
 	public GameObject capsule;
