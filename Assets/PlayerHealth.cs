@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
 			TakeDamage(10);
 		} 
 		if (other.tag == "Capsule" && currentHealth < 100) {
-			TakeDamage(-1);
+			TakeDamage(-5);
 		}
 	}
 	void Update ()

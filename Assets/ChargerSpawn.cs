@@ -19,6 +19,10 @@ public class ChargerSpawn : MonoBehaviour {
 	
 	}
 	void Update () {
+		if (transform.position.z > 57) {
+			Application.LoadLevel ("Level 4 Loader");
+
+		}
 		Vector3 player = Player.position;
 		Vector3 pos = transform.position;
 		pos.z = player.z + 15f;
@@ -33,6 +37,7 @@ public class ChargerSpawn : MonoBehaviour {
 		if (random > .04 && random < .05) {
 			Instantiate (EnemyCharger, transform4.position, transform4.rotation);
 		}
+
 		
 		
 		

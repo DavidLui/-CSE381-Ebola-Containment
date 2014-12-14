@@ -52,8 +52,7 @@ public class PlayerMovement : MonoBehaviour
 				    && transform.position.x <= 1) {
 					pose.x = 5.7f;
 				}
-				else if (transform.position.x <= -5.9 &&
-				         transform.position.x >= -6.1) {
+				else if (transform.position.x <= -5.3) {
 					pose.x = 0;
 
 				}
@@ -89,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 		if (other.tag == "Capsule") {
 			mutationPoints += 1;
 			Destroy (other.gameObject);
-			mutationText.text = "Mutation Points: " + mutationPoints;
+			mutationText.text = "Blood Capsules: " + mutationPoints;
 			speed +=.15f;
 		} 
 	}

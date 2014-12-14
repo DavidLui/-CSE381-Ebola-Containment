@@ -23,6 +23,18 @@ public class EnemyAttack : MonoBehaviour {
 	void OnTriggerEnter (Collider other)
 	{
 		// If the entering collider is the player...
+		if (Application.loadedLevelName == "Level 3") {
+			if (other.tag == "Player") {
+				Destroy (gameObject);
+
+			}
+		}
+		if (Application.loadedLevelName == "Level 2") {
+			if (other.tag == "Player") {
+				Destroy (gameObject);
+				
+			}
+		}
 		if (other.tag == "Bolt") {
 			Aggro = true;
 			transform.position -= transform.forward * Time.deltaTime * 5f;
