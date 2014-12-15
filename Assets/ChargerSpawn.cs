@@ -11,6 +11,7 @@ public class ChargerSpawn : MonoBehaviour {
 	public Transform transform3;
 	public Transform transform4;
 	public Transform Player;
+	public GameObject capsule;
 	public GameObject EnemyCharger;
 	// Update is called once per frame
 	void OnCollisionEnter (Collision other) {

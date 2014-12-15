@@ -92,7 +92,7 @@ public class EnemyAttack : MonoBehaviour {
 				Destroy (gameObject);
 				
 			}
-			StartCoroutine(MyMethod());
+			//StartCoroutine(MyMethod());
 		}
 		else if (Application.loadedLevel == 6)
 		{

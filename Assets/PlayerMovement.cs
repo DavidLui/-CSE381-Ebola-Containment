@@ -38,7 +38,8 @@ public class PlayerMovement : MonoBehaviour
 			if (transform.position.y <= 0) {
 				Application.LoadLevel (3);
 
-			}			rigidbody.velocity = transform.forward * 3.0f;
+			}			
+			rigidbody.velocity = transform.forward * 2.0f;
 
 
 		}
