@@ -21,9 +21,19 @@ public class BossAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.LookAt(playerTransform);
-		if (BossHP <= 50) {
-			Application.LoadLevel("Level 2 Loader");
+		if (BossHP <= 0) {
+			transform.Translate (-Vector3.up * 2.5f * Time.deltaTime);
+			GetComponent <Rigidbody> ().isKinematic = true;
+			StartCoroutine(MyMethod2());
+
 		}
+	}
+	IEnumerator MyMethod2() {
+		yield return new WaitForSeconds(3);
+		Application.LoadLevel("Level 2 Loader");
+
+		
+
 	}
 	public GameObject capsule;
 	void OnCollisionEnter (Collision other) {
@@ -63,7 +73,7 @@ public class BossAttack : MonoBehaviour {
 	IEnumerator MyMethod() {
 		Debug.Log("Before Waiting 2 seconds");
 		yield return new WaitForSeconds(2);
-		rigidbody.velocity = Vector3.up * 20 + transform.forward * 3.0f;
+		rigidbody.velocity = Vector3.up * 15 + transform.forward * 3.0f;
 
 		Debug.Log("After Waiting 2 Seconds");
 	}

@@ -16,10 +16,21 @@ public class PlayerShooting : MonoBehaviour {
 	void Update () {
 		timer += Time.deltaTime;
 		Debug.Log (timer);
+
 		if (Input.GetButton ("Fire1") && timer>= timeBetweenBullets) {//Time.time > nextFire ) {
 			directionText.text = "";
+			if (Application.loadedLevelName == "Level 2") { 
+				//transform.position += transform.forward * Time.deltaTime * 17f;
+				
+			}
+			else {
+
+
+			
 			Shoot();
 			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			transform.position -= transform.forward * Time.deltaTime * 7f;
+			}
 		}
 	}
 	

@@ -41,6 +41,13 @@ public class PlayerHealth : MonoBehaviour
 			TakeDamage(-5);
 		}
 	}
+	IEnumerator MyMethod2() {
+		yield return new WaitForSeconds(3);
+		Application.LoadLevel ("GameOver");
+
+		
+		
+	}
 	void Update ()
 	{
 		// If the player has just been damaged...
@@ -56,6 +63,10 @@ public class PlayerHealth : MonoBehaviour
 		
 		// Reset the damaged flag.
 		damaged = false;
+		if (isDead) {
+			transform.Translate (-Vector3.up * 2.5f * Time.deltaTime);
+
+				}
 	}
 	
 	
@@ -72,7 +83,9 @@ public class PlayerHealth : MonoBehaviour
 		if(currentHealth <= 0 && !isDead)
 		{
 			// ... it should die.
+			GetComponent <Rigidbody> ().isKinematic = true;
 			Death ();
+			StartCoroutine (MyMethod2());
 		}
 	}
 	
@@ -81,7 +94,6 @@ public class PlayerHealth : MonoBehaviour
 	{
 		// Set the death flag so this function won't be called again.
 		isDead = true;
-		Application.LoadLevel ("GameOver");
 		playerMovement.enabled = false;
 		playerShooting.enabled = false;
 	}       

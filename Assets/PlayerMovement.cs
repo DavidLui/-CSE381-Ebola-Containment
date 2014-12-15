@@ -31,12 +31,20 @@ public class PlayerMovement : MonoBehaviour
 	}
 	
 	void Update() {
-		if (Application.loadedLevel == 5) {
+		if (Application.loadedLevel == 5
+		    ) {
 			if (transform.position.y <= 0) {
 				Application.LoadLevel (3);
 
 			}			rigidbody.velocity = transform.forward * 3.0f;
 
+
+		}
+		if (Application.loadedLevelName == "Level 2") {
+			if (transform.position.y <= 0) {
+				Application.LoadLevel (3);
+				
+			}	
 
 		}
 

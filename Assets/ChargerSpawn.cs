@@ -19,7 +19,7 @@ public class ChargerSpawn : MonoBehaviour {
 	
 	}
 	void Update () {
-		if (transform.position.z > 57) {
+		if (transform.position.z > 58) {
 			Application.LoadLevel ("Level 4 Loader");
 
 		}
