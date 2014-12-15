@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 	
 	public GUIText mutationText;
 	public int mutationPoints;
+
+	private int slowTimer = 0;
 	// Use this for initialization
 	void Start () {
 		mutationPoints = 0;
@@ -86,6 +88,15 @@ public class PlayerMovement : MonoBehaviour
 			
 			// Turn the player to face the mouse cursor.
 			Turning ();
+
+			if(slowTimer > 0)
+			{
+				slowTimer--;
+			}
+			else
+			{
+
+			}
 		}
 	}
 	
@@ -107,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
 		
 		// Normalise the movement vector and make it proportional to the speed per second.
 		movement = movement.normalized * speed * Time.deltaTime;
+
+		if(slowTimer > 0) movement *= 0.5f;
 		
 		// Move the player to it's current position plus the movement.
 		playerRigidbody.MovePosition (transform.position + movement);
@@ -138,5 +151,8 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 	
-
+	public void AddSlow()
+	{
+		slowTimer = 120;
+	}
 }

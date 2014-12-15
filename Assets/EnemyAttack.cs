@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour {
 		EnemyHealth = GetComponent <EnemyHealth> ();
 		Health = EnemyHealth.currentHealth;	
 		playerHealth = Player.GetComponent <PlayerHealth> ();
-
+		int had = 9823;
 
 	}
 	Vector3 movement;
@@ -80,22 +80,46 @@ public class EnemyAttack : MonoBehaviour {
 			rigidbody.velocity = transform.forward * 6.0f;
 			if (gameObject.transform.position.y <= 1.2) {
 				Destroy (gameObject);
-
+				
 			}
 			StartCoroutine(MyMethod());
 
 			
 		}
 		else if (Application.loadedLevel == 5) {
-			float time = Time.timeSinceLevelLoad;
-			rigidbody.velocity = transform.forward * (5.0f + (time / 50));
-			Vector3 pose = transform.position;
-			if ((pose.z + 5f) <= Player.transform.position.z) {
+			rigidbody.velocity = transform.forward * 6.0f;
+			if (gameObject.transform.position.y <= 1.2) {
 				Destroy (gameObject);
+				
 			}
-		
+			StartCoroutine(MyMethod());
 		}
-
+		else if (Application.loadedLevel == 6)
+		{
+			timer += Time.deltaTime;
+			float distance = Vector3.Distance (Player.transform.position, transform.position);
+			if (playerHealth.currentHealth <= 0) {
+				Aggro = false;
+			} else if (distance <= 10) {
+				Aggro = true;
+			}
+			if (Aggro == true) {
+				if (Player != null) {
+					transform.LookAt(Player.transform);
+				}
+				if (EnemyHealth.currentHealth > 0 && distance >= 11) {
+					rigidbody.velocity = transform.forward * 3.0f;
+				} else {
+					rigidbody.velocity = transform.forward * 0.0f;
+				}
+				
+				if ((timer >= timeBetweenBullets) && EnemyHealth.currentHealth > 0) {
+					Shoot ();
+					Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+				}
+				
+			}
+		}
 		
 
 	}

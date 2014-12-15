@@ -4,6 +4,8 @@ var isReturn = false;
 var loadLevel1 = false;
 var loadLevel2 = false;
 var loadLevel3 = false;
+var loadLevel4 = false;
+var loadLevel5 = false;
 var levelSelect = false;
 function OnMouseEnter() {
 	renderer.material.color = Color.red;
@@ -41,6 +43,28 @@ Debug.Log(Application.loadedLevelName);
 		}
 		else {
 		Application.LoadLevel("Level 3");
+		}
+	}
+	else if (loadLevel4 == true)
+	{
+		if(Application.loadedLevelName == "Level Select")
+		{
+			Application.LoadLevel("Level 4 Loader");
+		}
+		else
+		{
+			Application.LoadLevel("Level 1");
+		}
+	}
+	else if (loadLevel5 == true)
+	{
+		if(Application.loadedLevelName == "Level Select")
+		{
+			Application.LoadLevel("Level 5 Loader");
+		}
+		else
+		{
+			Application.LoadLevel("Level 1");
 		}
 	}
 	else if (loadLevel1 == true) {

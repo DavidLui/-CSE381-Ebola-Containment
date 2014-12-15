@@ -12,8 +12,14 @@ public class GameController : MonoBehaviour {
 		enemyCount = 6;
 		else if (Application.loadedLevel == 4)  {
 
-
-
+		}
+		else if (Application.loadedLevel == 6)
+		{
+			enemyCount = 4;
+		}
+		else if (Application.loadedLevel == 8)
+		{
+			enemyCount = 0;
 		}
 	}
 	

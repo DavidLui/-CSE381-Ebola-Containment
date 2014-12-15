@@ -15,7 +15,6 @@ public class PlayerShooting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
-		Debug.Log (timer);
 
 		if (Input.GetButton ("Fire1") && timer>= timeBetweenBullets) {//Time.time > nextFire ) {
 			directionText.text = "";

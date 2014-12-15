@@ -7,8 +7,7 @@ public class PlayerHealth : MonoBehaviour
 	public int startingHealth = 100;                            // The amount of health the player starts the game with.
 	public int currentHealth;                                   // The current health the player has.
 	public GUIText healthText;
-	
-                              
+	                 
 	PlayerMovement playerMovement;                              // Reference to the player's movement.
 	PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
 	bool isDead;                                                // Whether the player is dead.
@@ -86,6 +85,11 @@ public class PlayerHealth : MonoBehaviour
 			GetComponent <Rigidbody> ().isKinematic = true;
 			Death ();
 			StartCoroutine (MyMethod2());
+		}
+
+		if(Application.loadedLevelName == "Level 5")
+		{
+			playerMovement.AddSlow();
 		}
 	}
 	
